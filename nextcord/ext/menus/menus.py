@@ -67,7 +67,7 @@ class Button:
         *,
         skip_if: Optional[Callable[["Menu"], bool]] = None,
         position: Optional[Position] = None,
-        lock: Optional[bool] = True
+        lock: Optional[bool] = True,
     ):
 
         self.emoji = _cast_emoji(emoji)
@@ -264,7 +264,7 @@ class Menu(metaclass=_MenuMeta):
         delete_message_after: bool = False,
         clear_reactions_after: bool = False,
         check_embeds: bool = False,
-        message: Optional[nextcord.Message] = None
+        message: Optional[nextcord.Message] = None,
     ):
 
         self.timeout = timeout
@@ -719,7 +719,9 @@ class Menu(metaclass=_MenuMeta):
 
     async def send_initial_message(
         self, ctx: commands.Context, channel: nextcord.abc.Messageable
-    ) -> nextcord.Message:
+    ) -> Optional[
+        Union[nextcord.Message, nextcord.InteractionMessage, nextcord.WebhookMessage]
+    ]:
         """|coro|
 
         Sends the initial message for the menu session.
@@ -829,7 +831,7 @@ class ButtonMenu(Menu, nextcord.ui.View):
         clear_buttons_after: bool = False,
         disable_buttons_after: bool = False,
         *args,
-        **kwargs
+        **kwargs,
     ):
         Menu.__init__(self, timeout=timeout, *args, **kwargs)
         nextcord.ui.View.__init__(self, timeout=timeout)
