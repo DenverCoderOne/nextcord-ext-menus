@@ -57,7 +57,7 @@ class Button:
         the user restarts their client. Defaults to ``Position(0)``.
     lock: :class:`bool`
         Whether the button should lock all other buttons from being processed
-        until this button is done. Defaults to ``True``.
+        until this button is done. Defaults to :py:obj:`True`.
     """
 
     __slots__ = ("emoji", "_action", "_skip_if", "position", "lock")
@@ -243,14 +243,14 @@ class Menu(metaclass=_MenuMeta):
         delete the reactions one by one.
     check_embeds: :class:`bool`
         Whether to verify embed permissions as well.
-    ctx: Optional[:class:`commands.Context`]
-        The context that started this pagination session or ``None`` if it hasn't
+    ctx: Optional[:class:`nextcord.ext.commands.Context`]
+        The context that started this pagination session or :py:obj:`None` if it hasn't
         been started yet or :class:`nextcord.Interaction` is used instead.
     interaction: Optional[:class:`nextcord.Interaction`]
-        The interaction that started this pagination session or ``None`` if it hasn't
-        been started yet or :class:`commands.Context` is used instead.
-    bot: Optional[:class:`commands.Bot`]
-        The bot that is running this pagination session or ``None`` if it hasn't
+        The interaction that started this pagination session or :py:obj:`None` if it hasn't
+        been started yet or :class:`~nextcord.ext.commands.Context` is used instead.
+    bot: Optional[:class:`nextcord.ext.commands.Bot`]
+        The bot that is running this pagination session or :py:obj:`None` if it hasn't
         been started yet.
     message: Optional[Union[:class:`nextcord.Message`, :class:`nextcord.PartialInteractionMessage`]]
         The message that has been sent for handling the menu. This is the returned
@@ -298,7 +298,7 @@ class Menu(metaclass=_MenuMeta):
 
         Returns
         ---------
-        Mapping[:class:`PartialEmoji`, :class:`Button`]
+        Mapping[:class:`~nextcord.PartialEmoji`, :class:`Button`]
             A mapping of button emoji to the actual button class.
         """
         key: Callable[[Button], Position] = lambda button: button.position
@@ -312,7 +312,7 @@ class Menu(metaclass=_MenuMeta):
 
         If the menu has already been started then the button will
         not be added unless the ``react`` keyword-only argument is
-        set to ``True``. Note that when this happens this function
+        set to :py:obj:`True`. Note that when this happens this function
         will need to be awaited.
 
         If a button with the same emoji is added then it is overridden.
@@ -422,7 +422,7 @@ class Menu(metaclass=_MenuMeta):
 
         If the menu has already been started then the buttons will
         not be removed unless the ``react`` keyword-only argument is
-        set to ``True``. Note that when this happens this function
+        set to :py:obj:`True`. Note that when this happens this function
         will need to be awaited.
 
         Parameters
@@ -753,7 +753,7 @@ class Menu(metaclass=_MenuMeta):
 
         Parameters
         ------------
-        ctx: :class:`Context`
+        ctx: Optional[:class:`~nextcord.ext.commands.Context`]
             The invocation context to use.
         channel: :class:`nextcord.abc.Messageable`
             The messageable to send the message to.
@@ -831,11 +831,11 @@ class ButtonMenu(Menu, nextcord.ui.View):
         Whether to delete the message after the menu interaction is done.
     check_embeds: :class:`bool`
         Whether to verify embed permissions as well.
-    ctx: Optional[:class:`commands.Context`]
-        The context that started this pagination session or ``None`` if it hasn't
+    ctx: Optional[:class:`nextcord.ext.commands.Context`]
+        The context that started this pagination session or :py:obj:`None` if it hasn't
         been started yet.
-    bot: Optional[:class:`commands.Bot`]
-        The bot that is running this pagination session or ``None`` if it hasn't
+    bot: Optional[:class:`nextcord.ext.commands.Bot`]
+        The bot that is running this pagination session or :py:obj:`None` if it hasn't
         been started yet.
     message: Optional[Union[:class:`nextcord.Message`, :class:`nextcord.PartialInteractionMessage`]]
         The message that has been sent for handling the menu. This is the returned

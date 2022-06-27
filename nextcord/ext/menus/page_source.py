@@ -55,8 +55,8 @@ class PageSource:
         pass
 
     def is_paginating(self) -> bool:
-        """An abstract method that notifies the :class:`MenuPagesBase` whether or not
-        to start paginating.
+        """An abstract method that notifies the :class:`MenuPages` or
+        :class:`ButtonMenuPages` whether or not to start paginating.
 
         This signals whether to add menus to this page source. Menus can either be
         buttons or reactions depending on the subclass.
@@ -74,7 +74,7 @@ class PageSource:
         """An optional abstract method that retrieves the maximum number of pages
         this page source has. Useful for UX purposes.
 
-        The default implementation returns ``None``.
+        The default implementation returns :py:obj:`None`.
 
         Returns
         --------

@@ -16,7 +16,7 @@ class MenuPagesBase(Menu):
     ------------
     current_page: :class:`int`
         The current page that we are in. Zero-indexed
-        between [0, :attr:`PageSource.max_pages`).
+        between [0, :meth:`PageSource.get_max_pages`).
     """
 
     FIRST_PAGE = "\N{BLACK LEFT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR}\ufe0f"
@@ -203,7 +203,7 @@ class MenuPages(MenuPagesBase):
     ------------
     current_page: :class:`int`
         The current page that we are in. Zero-indexed
-        between [0, :attr:`PageSource.max_pages`).
+        between [0, :meth:`PageSource.get_max_pages`).
     """
 
     def __init__(self, source: PageSource, **kwargs):
@@ -279,14 +279,14 @@ class ButtonMenuPages(MenuPagesBase, ButtonMenu):
 
     Parameters
     -----------
-    style: :class:`nextcord.ui.ButtonStyle`
+    style: :class:`nextcord.ButtonStyle`
         The button style to use for the pagination buttons.
 
     Attributes
     ------------
     current_page: :class:`int`
         The current page that we are in. Zero-indexed
-        between [0, :attr:`PageSource.max_pages`).
+        between [0, :meth:`PageSource.get_max_pages`).
     """
 
     def __init__(
